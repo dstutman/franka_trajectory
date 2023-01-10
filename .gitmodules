@@ -1,0 +1,3 @@
+[submodule "vendor/libfranka"]
+	path = vendor/libfranka
+	url = https://github.com/frankaemika/libfranka.git
