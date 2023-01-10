@@ -1,3 +1,6 @@
 [submodule "vendor/libfranka"]
 	path = vendor/libfranka
 	url = https://github.com/frankaemika/libfranka.git
+[submodule "vendor/galaxy_camera"]
+	path = vendor/galaxy_camera
+	url = git@github.com:dstutman/galaxy_camera.git
