@@ -26,11 +26,14 @@ int main() {
     
     // Unlock all joints and seek the bounding box
     robot.setGuidingMode({true, true, true, true, true, true}, true);
-    std::cout << "Line the effector up with the base of the satellite";
+    std::cout << "Line the effector up with the base of the satellite and hit enter\n";
     std::cin.get();
 
-    // Get the homogenous transformation matrix of the current position
+    // Get the homogenous transformation matrix of the current position and wait
     auto state = robot.readOnce();
+    std::cout << "Hit enter when clear to continue\n";
+    std::cin.get()
+
     auto effector_pose = Eigen::Matrix4<double>(state.O_T_EE.data());
     auto effector_orientation = effector_pose.block<3, 3>(0, 0);
     auto effector_position = effector_pose.block<3, 1>(3, 0);
