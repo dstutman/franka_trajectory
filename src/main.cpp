@@ -8,9 +8,6 @@
 #include <Eigen/Core>
 #include <Eigen/LU>
 
-#include <GxIAPI.h>
-
-
 int main() {
     // Parameters
     const auto camera_effector_mass = 1.0;
