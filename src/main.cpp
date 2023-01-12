@@ -9,6 +9,7 @@
 #include <Eigen/Geometry>
 
 #include "trajectories.hpp"
+#include "executor.hpp"
 
 int main() {
     // Parameters

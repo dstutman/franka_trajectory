@@ -7,7 +7,9 @@ option(BUILD_EXAMPLES "Build example code" ON)
 add_subdirectory(vendor/libfranka)
 
 add_executable(franka_trajectory
-    src/main.cpp)
+    src/main.cpp
+    src/trajectories.cpp
+    src/executor.cpp)
 target_include_directories(franka_trajectory PRIVATE include vendor/galaxy_camera/include)
 
 # Dependencies
