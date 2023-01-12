@@ -1,5 +1,4 @@
 #include <iostream>
-#include <optional>
 
 #include <franka/control_types.h>
 #include <franka/robot.h>
@@ -7,6 +6,9 @@
 
 #include <Eigen/Core>
 #include <Eigen/LU>
+#include <Eigen/Geometry>
+
+#include "trajectories.hpp"
 
 int main() {
     // Parameters
@@ -32,11 +34,12 @@ int main() {
     // Get the homogenous transformation matrix of the current position and wait
     auto state = robot.readOnce();
     std::cout << "Hit enter when clear to continue\n";
-    std::cin.get()
+    std::cin.get();
 
     auto effector_pose = Eigen::Matrix4<double>(state.O_T_EE.data());
     auto effector_orientation = effector_pose.block<3, 3>(0, 0);
     auto effector_position = effector_pose.block<3, 1>(3, 0);
+    auto line = Trajectories::line_generator(Eigen::Vector3d(), Eigen::Vector3d(), Eigen::Quaterniond());
 
     // Determine Dephi's COM location in the base frame
     Eigen::Vector3<double> delfi_com_offset = {0, 0, 0.25}; // FIXME: Offset from base of Delfi to COM
