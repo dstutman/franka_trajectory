@@ -54,7 +54,7 @@ int main()
     };
     auto exec_state = Executor::ExecutorState{
         // NOTE: Narrowing ok if trajectory time sufficiently short
-        t : (double)initial_time.time_since_epoch().count(),
+        t : 0,
     };
     while (Executor::loop(exec_config, &exec_state, &robot))
     {
