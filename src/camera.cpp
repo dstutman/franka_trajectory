@@ -14,5 +14,4 @@ void camera() {
     GX_DEV_HANDLE device_handle;
 
     assert(GXOpenDevice(&open_params, &device_handle) == GX_STATUS_SUCCESS);
-    GX
 }
