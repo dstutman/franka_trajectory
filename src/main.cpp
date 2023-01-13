@@ -56,11 +56,8 @@ int main()
         // NOTE: Narrowing ok if trajectory time sufficiently short
         t : 0,
     };
-    while (Executor::loop(exec_config, &exec_state, &robot))
-    {
-        const auto time_delta = std::chrono::system_clock::now() - initial_time;
-        exec_state.t = time_delta.count();
-    }
+    auto executor = Executor::executor_generator(exec_config, &exec_state);
+    robot.control(executor);
 
     robot.stop();
 }
