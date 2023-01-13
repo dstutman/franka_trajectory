@@ -4,3 +4,6 @@
 [submodule "vendor/galaxy_camera"]
 	path = vendor/galaxy_camera
 	url = git@github.com:dstutman/galaxy_camera.git
+[submodule "vendor/toojpeg"]
+	path = vendor/toojpeg
+	url = https://create.stephan-brumme.com/toojpeg/git
