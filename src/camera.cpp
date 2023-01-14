@@ -50,9 +50,6 @@ void camera() {
     assert(frame_buffer->nStatus == GX_FRAME_STATUS_SUCCESS);
     std::cout << "Acquired frame";
 
-    // When done, re-enqueue the buffer
-    assert(GXQBuf(device_handle, frame_buffer) == GX_STATUS_SUCCESS);
-
     // Convert the image format
     uint8_t *const rgb_buffer = new uint8_t[payload_size * 3];
     switch (frame_buffer->nPixelFormat) {
@@ -67,6 +64,9 @@ void camera() {
             // Unimplemented
             assert(false);
     }
+
+    // When done, re-enqueue the buffer
+    assert(GXQBuf(device_handle, frame_buffer) == GX_STATUS_SUCCESS);
 
     GXCloseDevice(device_handle);
 }
