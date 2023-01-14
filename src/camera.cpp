@@ -1,5 +1,7 @@
 #include "camera.hpp"
 
+#include <cassert>
+
 void camera() {
     assert(GXInitLib() == GX_STATUS_SUCCESS);
 
