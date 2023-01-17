@@ -5,6 +5,7 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 #include <franka/control_types.h>
+#include <iostream>
 
 namespace Trajectories
 {
@@ -17,7 +18,7 @@ namespace Trajectories
             const Eigen::Matrix3d orientation_matrix = this->orientation.toRotationMatrix();
             Eigen::Matrix4d homogenous_transformation = Eigen::Matrix4d();
             homogenous_transformation.topLeftCorner<3, 3>() = orientation_matrix;
-            homogenous_transformation.block<3, 1>(3, 0) = this->position;
+            homogenous_transformation.block<1, 3>(3, 0) = this->position;
             homogenous_transformation(3, 3) = 1.;
 
             // Gruesome conversion for libfranka
@@ -26,6 +27,7 @@ namespace Trajectories
             for (uint i = 0; i < 16; i++) {
                 array[i] = homogenous_transformation.data()[i];
             }
+
             return franka::CartesianPose(array);
         }
     } Pose;
